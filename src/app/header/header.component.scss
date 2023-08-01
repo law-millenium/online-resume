@@ -1,7 +1,7 @@
-// TODO : ajouter couleurs dans un fichier à part de variables avec les mixins
+@import '/src/scss/utilities/color.scss';
 
 .banner {
-    background-color: #00abe4;
+    background-color: $light-blue;
     display: flex;
     height: 25%;
  }
