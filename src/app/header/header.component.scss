@@ -5,29 +5,38 @@
 .banner {
     background-color: $light-blue;
     display: flex;
+    // flex-direction: row;
     height: 50px;
-    // overflow-wrap: break-word;
 
-    .button{
+    .button {
         background-color: $light-blue;
         border: none;
         width: 50px;
-        
-        .burger-icon{
-            width: 1.5rem;
-            height: 1.5rem;
-        }
     }
 
     .details {
         display: flex;
         flex-direction: row;
         padding: 0.5rem;
+        width: 100%;
 
-        .image{
+        .image {
             display: none;
         }
+
+        .linkedin-icon {
+            margin: 5px 5px 5px auto;
+        }
+
+        .github-icon {
+            margin: 5px 0px 5px 5px;
+        }
     }
+}
+
+img {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 
