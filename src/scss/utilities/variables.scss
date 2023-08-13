@@ -33,3 +33,21 @@ $font-weight-light: 300 !default;
 $font-weight-normal: 400 !default;
 $font-weight-semibold: 600 !default;
 $font-weight-bold: 700 !default;
+
+// =============================================================================
+// Responsive breakpoints
+// =============================================================================
+$breakpoints: (
+    'small': (
+        min-width: 410px,
+    ),
+    'medium': (
+        min-width: 600px,
+    ),
+    'large': (
+        min-width: 992px,
+    ),
+    'huge': (
+        min-width: 1200px,
+    ),
+);

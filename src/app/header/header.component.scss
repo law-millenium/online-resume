@@ -1,7 +1,30 @@
 @import '/src/scss/utilities/color.scss';
+@import '/src/scss/utilities/mixins.scss';
+@import '/src/scss/utilities/variables.scss';
 
 .banner {
     background-color: $light-blue;
     display: flex;
-    height: 25%;
+    height: 10%;
+    // overflow-wrap: break-word;
+
+    .button{
+        width: 50px;
+        
+        .burger-icon{
+            
+            width: 28px;
+        }
+    }
+
+    .image{
+        display: none;
+    }
+}
+
+
+@include media_queries('huge') {
+    .banner {
+        height: 25%;
+    }
 }
