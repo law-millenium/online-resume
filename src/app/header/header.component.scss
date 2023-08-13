@@ -5,20 +5,28 @@
 .banner {
     background-color: $light-blue;
     display: flex;
-    height: 10%;
+    height: 50px;
     // overflow-wrap: break-word;
 
     .button{
+        background-color: $light-blue;
+        border: none;
         width: 50px;
         
         .burger-icon{
-            
-            width: 28px;
+            width: 1.5rem;
+            height: 1.5rem;
         }
     }
 
-    .image{
-        display: none;
+    .details {
+        display: flex;
+        flex-direction: row;
+        padding: 0.5rem;
+
+        .image{
+            display: none;
+        }
     }
 }
 
