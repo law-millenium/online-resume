@@ -39,6 +39,12 @@ img {
     height: 1.5rem;
 }
 
+p {
+    font-family: $font-family;
+    font-weight: $font-weight-semibold;
+    color: $white
+}
+
 @include media_queries('huge') {
     .banner {
         height: 25%;
