@@ -48,3 +48,6 @@ Thumbs.db
 
 # Files added manually
 yarn.lock
+.gitignore
+.prettierignore
+.editorconfig
