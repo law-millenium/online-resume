@@ -45,6 +45,10 @@
             "rules": {
                 "prettier/prettier": ["error", { "parser": "angular" }]
             }
+        },
+        {
+            "files": ["*.scss"],
+            "extends": ["plugin:prettier/recommended"]
         }
     ]
 }

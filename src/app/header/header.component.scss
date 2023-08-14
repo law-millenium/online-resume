@@ -17,9 +17,13 @@
     .details {
         display: flex;
         flex-direction: row;
-        align-items: center;
+            align-items: center;
         padding: 0.5rem;
         width: 100%;
+ 
+        .photo{
+            display: none;
+        }
 
         .image {
             display: none;
@@ -36,7 +40,7 @@
     }
 }
 
-img {
+.icon {
     width: 1.5rem;
     height: 1.5rem;
 }
@@ -47,8 +51,18 @@ p {
     color: $white
 }
 
-TODO:ajouter ma photo dès 400 en small ou après en medium ?
+// TODO:ajouter ma photo dès 400 en small ou après en medium ?
 @include media_queries('small') {
+    .photo{
+        display: block;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        // TODO:gérer format css dans pretier : https://stackoverflow.com/questions/54753495/how-to-edit-auto-formatting-rules-for-css-scss-less-using-prettier-in-vscode
+border-color: $white;
+border-width: 2px;
+border-style: solid;
+    }
 }
 
 // @include media_queries('medium') {
