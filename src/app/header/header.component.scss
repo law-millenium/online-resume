@@ -17,6 +17,7 @@
     .details {
         display: flex;
         flex-direction: row;
+        align-items: center;
         padding: 0.5rem;
         width: 100%;
 
@@ -25,11 +26,12 @@
         }
 
         .linkedin-icon {
-            margin: 5px 5px 5px auto;
+            margin-left:  auto;
+            margin-right:5px;
         }
 
         .github-icon {
-            margin: 5px 0px 5px 5px;
+            margin-right:5px;
         }
     }
 }
@@ -45,8 +47,21 @@ p {
     color: $white
 }
 
-@include media_queries('huge') {
-    .banner {
-        height: 25%;
-    }
+TODO:ajouter ma photo dès 400 en small ou après en medium ?
+@include media_queries('small') {
 }
+
+// @include media_queries('medium') {
+//     .banner {
+//         height: 100px;
+//     }
+
+//     img {
+//         width: 3rem;
+//         height: 3rem;
+//     }
+
+//     p{
+//         font-size: 2rem;
+//     }
+// }
