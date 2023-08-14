@@ -13,8 +13,5 @@
         },
         "editor.formatOnSave": false
     },
-    "conventionalCommits.scopes": [
-        "dev-containers",
-        "header"
-    ]
+    "conventionalCommits.scopes": ["dev-containers", "header"]
 }
