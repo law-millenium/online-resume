@@ -4,6 +4,7 @@
         "angular.ng-template",
         "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
-        "mhutchie.git-graph"
+        "mhutchie.git-graph",
+        "stylelint.vscode-stylelint"
     ]
 }

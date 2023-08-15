@@ -1,10 +1,11 @@
-@import '/src/scss/utilities/color.scss';
-@import '/src/scss/utilities/mixins.scss';
-@import '/src/scss/utilities/variables.scss';
+@import '/src/scss/utilities/color';
+@import '/src/scss/utilities/mixins';
+@import '/src/scss/utilities/variables';
 
 .banner {
     background-color: $light-blue;
     display: flex;
+
     // flex-direction: row;
     height: 50px;
 
@@ -17,18 +18,17 @@
     .details {
         display: flex;
         flex-direction: row;
-            align-items: center;
+        align-items: center;
         padding: 0.5rem;
         width: 100%;
 
-        
-p {
-    font-family: $font-family;
-    font-weight: $font-weight-semibold;
-    color: $white
-}
- 
-        .photo{
+        p {
+            font-family: $font-family;
+            font-weight: $font-weight-semibold;
+            color: $white;
+        }
+
+        .photo {
             display: none;
         }
 
@@ -37,12 +37,12 @@ p {
         }
 
         .linkedin-icon {
-            margin-left:  auto;
-            margin-right:5px;
+            margin-left: auto;
+            margin-right: 5px;
         }
 
         .github-icon {
-            margin-right:5px;
+            margin-right: 5px;
         }
     }
 }
@@ -53,18 +53,18 @@ p {
 }
 
 @include media_queries('medium') {
-    .banner .details .photo{
+    .banner .details .photo {
         display: block;
         margin-left: auto;
         width: 3rem;
         height: 3rem;
         border-radius: 50%;
-        // TODO:gérer format css dans pretier : https://stackoverflow.com/questions/54753495/how-to-edit-auto-formatting-rules-for-css-scss-less-using-prettier-in-vscode
-border-color: $white;
-border-width: 2px;
-border-style: solid;
 
-}
+        // TODO:gérer format css dans pretier : https://stackoverflow.com/questions/54753495/how-to-edit-auto-formatting-rules-for-css-scss-less-using-prettier-in-vscode
+        border-color: $white;
+        border-width: 2px;
+        border-style: solid;
+    }
 }
 
 // @include media_queries('medium') {
