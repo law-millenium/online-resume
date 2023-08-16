@@ -1,11 +1,13 @@
-@mixin media_queries($breakpoint) {
-    $raw-query: map-get($breakpoints, $breakpoint);
+@use 'sass:meta';
+@use 'sass:map';
 
+@mixin media-queries($breakpoint) {
+    $raw-query: map.get($breakpoints, $breakpoint);
     @if $raw-query {
         $query: if(
-            type-of($raw-query) == 'string',
-            unquote($raw-query),
-            inspect($raw-query)
+            meta.type-of($raw-query) == 'string',
+            string.unquote($raw-query),
+            meta.inspect($raw-query)
         );
 
         @media #{$query} {

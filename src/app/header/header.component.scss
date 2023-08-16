@@ -52,7 +52,7 @@
     height: 1.5rem;
 }
 
-@include media_queries('medium') {
+@include media-queries('medium') {
     .banner .details .photo {
         display: block;
         margin-left: auto;
@@ -67,7 +67,7 @@
     }
 }
 
-// @include media_queries('medium') {
+// @include media-queries('medium') {
 //     .banner {
 //         height: 100px;
 //     }

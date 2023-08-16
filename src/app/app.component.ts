@@ -6,8 +6,7 @@ import { HeaderComponent } from './header/header.component';
     selector: 'app-root',
     standalone: true,
     imports: [HeaderComponent, ContentComponent],
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    templateUrl: './app.component.html'
 })
 export class AppComponent {
     title = 'online-resume';
