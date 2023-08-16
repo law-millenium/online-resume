@@ -2,12 +2,13 @@
 // Fonts
 // =============================================================================
 @font-face {
-    font-family: 'Raleway';
+    font-family: Raleway;
     src: url('../../assets/Raleway-Regular.ttf') format('ttf');
 }
 
 $font-family: 'Raleway', sans-serif !default;
 
+// Weights
 $font-weight-light: 300 !default;
 $font-weight-normal: 400 !default;
 $font-weight-semibold: 600 !default;
