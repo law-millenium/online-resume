@@ -24,12 +24,14 @@
             display: flex;
             flex-direction: column;
 
-            p {
+            h1,
+            h2 {
                 color: $white;
+                font-size: $font-size-default;
             }
 
-            :first-child {
-                font-weight: $font-weight-semibold;
+            h2 {
+                font-weight: $font-weight-normal;
             }
 
             .separator {
@@ -73,7 +75,8 @@
             .text-container {
                 margin-left: 3%;
 
-                p {
+                h1,
+                h2 {
                     font-size: $font-size-big;
                 }
             }
