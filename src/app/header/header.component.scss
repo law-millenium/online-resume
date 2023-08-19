@@ -1,7 +1,106 @@
-@import '/src/scss/utilities/color.scss';
+@import '/src/scss/utilities/color';
+@import '/src/scss/utilities/mixins';
+@import '/src/scss/utilities/variables';
 
 .banner {
     background-color: $light-blue;
     display: flex;
-    height: 25%;
+    height: 50px;
+
+    .button {
+        background-color: $light-blue;
+        border: none;
+        width: 50px;
+    }
+
+    .details {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0.5rem;
+        width: 100%;
+
+        .text-container {
+            display: flex;
+            flex-direction: column;
+
+            h1,
+            h2 {
+                color: $white;
+                font-size: $font-size-default;
+            }
+
+            h2 {
+                font-weight: $font-weight-normal;
+            }
+
+            .separator {
+                display: none;
+            }
+        }
+
+        .photo {
+            display: none;
+        }
+
+        .image {
+            display: none;
+        }
+
+        .linkedin-icon {
+            margin-left: auto;
+            margin-right: 5px;
+        }
+
+        .github-icon {
+            margin-right: 5px;
+        }
+    }
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+@include media-queries('medium') {
+    .banner {
+        height: 20%;
+
+        .button {
+            display: none;
+        }
+
+        .details {
+            .text-container {
+                margin-left: 3%;
+
+                h1,
+                h2 {
+                    font-size: $font-size-big;
+                }
+            }
+
+            .photo {
+                display: block;
+                margin-left: auto;
+                width: 7rem;
+                height: 7rem;
+                border-radius: 50%;
+                border-color: $white;
+                border-width: 4px;
+                border-style: solid;
+            }
+        }
+    }
+}
+
+@include media-queries('huge') {
+    .banner .details .text-container {
+        flex-direction: row;
+
+        .separator {
+            display: block;
+        }
+    }
 }

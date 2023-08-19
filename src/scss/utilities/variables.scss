@@ -1,35 +1,37 @@
 // =============================================================================
 // Fonts
 // =============================================================================
-
 @font-face {
-    font-family: "Raleway-Thin";
-    src: url("../../assets/Raleway-Thin.ttf") format("ttf");
-}
-@font-face {
-    font-family: "Raleway-Light";
-    src: url("../../assets/Raleway-Light.ttf") format("ttf");
-}
-@font-face {
-    font-family: "Raleway";
-    src: url("../../assets/Raleway-Regular.ttf") format("ttf");
-}
-@font-face {
-    font-family: "Raleway-SemiBold";
-    src: url("../../assets/Raleway-SemiBold.ttf") format("ttf");
-}
-@font-face {
-    font-family: "Raleway-Bold";
-    src: url("../../assets/Raleway-Bold.ttf") format("ttf");
+    font-family: Raleway;
+    src: url('../../assets/Raleway-Regular.ttf') format('ttf');
 }
 
-$font-family-thin: 'Raleway-Thin', sans-serif !default;
-$font-family-light: 'Raleway-Light', sans-serif !default;
 $font-family: 'Raleway', sans-serif !default;
-$font-family-semibold: 'Raleway-SemiBold', sans-serif !default;
-$font-family-bold: 'Raleway-Bold', sans-serif !default;
 
+// Sizes
+$font-size-default: 1rem !default;
+$font-size-big: 2.5rem !default;
+
+// Weights
 $font-weight-light: 300 !default;
 $font-weight-normal: 400 !default;
 $font-weight-semibold: 600 !default;
 $font-weight-bold: 700 !default;
+
+// =============================================================================
+// Responsive breakpoints
+// =============================================================================
+$breakpoints: (
+    'small': (
+        min-width: 410px
+    ),
+    'medium': (
+        min-width: 600px
+    ),
+    'large': (
+        min-width: 992px
+    ),
+    'huge': (
+        min-width: 1200px
+    )
+);
