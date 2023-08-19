@@ -21,12 +21,19 @@
         width: 100%;
 
         .text-container {
+            display: flex;
+            flex-direction: column;
+
             p {
                 color: $white;
             }
 
             :first-child {
                 font-weight: $font-weight-semibold;
+            }
+
+            .separator {
+                display: none;
             }
         }
 
@@ -78,9 +85,19 @@
                 height: 7rem;
                 border-radius: 50%;
                 border-color: $white;
-                border-width: 2px;
+                border-width: 4px;
                 border-style: solid;
             }
+        }
+    }
+}
+
+@include media-queries('huge') {
+    .banner .details .text-container {
+        flex-direction: row;
+
+        .separator {
+            display: block;
         }
     }
 }
