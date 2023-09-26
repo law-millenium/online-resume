@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { ToggleMenuService } from '../services/toggle-menu.service';
 
 @Component({
     selector: 'app-header',
@@ -8,4 +9,10 @@ import { Component } from '@angular/core';
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+    constructor(private toggleMenuService: ToggleMenuService) {}
+
+    toggleMenu() {
+        this.toggleMenuService.toggle.next(true);
+    }
+}
