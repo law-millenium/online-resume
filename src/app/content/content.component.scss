@@ -3,20 +3,20 @@
 @import '/src/scss/utilities/variables';
 
 .container {
-    background-color: red;
     padding-top: 50px;
 
     .sidenav {
-        background-color: $white;
         position: fixed;
         padding-top: 50px;
+        background-color: $white;
+        cursor: pointer;
 
         .categories {
             text-align: center;
             padding: 0;
 
             h3 {
-                font-size: 1rem;
+                font-size: $font-size-default;
                 font-weight: $font-weight-normal;
                 padding: 8px;
 
@@ -35,6 +35,11 @@
 
         .sidenav {
             padding-top: 20vh;
+            .categories {
+                h3 {
+                    font-size: $font-size-medium;
+                }
+            }
         }
     }
 }
