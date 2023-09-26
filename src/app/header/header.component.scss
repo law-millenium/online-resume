@@ -6,6 +6,11 @@
     background-color: $light-blue;
     display: flex;
     height: 50px;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    right: 0;
+    left: 0;
 
     .button {
         background-color: $light-blue;
@@ -65,7 +70,7 @@
 
 @include media-queries('medium') {
     .banner {
-        height: 20%;
+        height: 20vh;
 
         .button {
             display: none;
@@ -90,6 +95,14 @@
                 border-color: $white;
                 border-width: 4px;
                 border-style: solid;
+            }
+
+            .linkedin-icon {
+                margin-right: 0.5%;
+            }
+
+            .github-icon {
+                margin-right: 3%;
             }
         }
     }
