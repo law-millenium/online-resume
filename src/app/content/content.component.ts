@@ -4,11 +4,12 @@ import { Component } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatDrawerMode, MatSidenavModule } from '@angular/material/sidenav';
 import { ToggleMenuService } from '../services/toggle-menu.service';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-content',
     standalone: true,
-    imports: [MatSidenavModule, MatListModule, CommonModule],
+    imports: [MatSidenavModule, MatListModule, CommonModule, RouterOutlet],
     templateUrl: './content.component.html',
     styleUrls: ['./content.component.scss']
 })

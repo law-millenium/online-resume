@@ -14,5 +14,10 @@
         "source.fixAll": true
     },
 
-    "conventionalCommits.scopes": ["dev-containers", "header", "Sidenav"]
+    "conventionalCommits.scopes": [
+        "dev-containers",
+        "header",
+        "Sidenav",
+        "summary"
+    ]
 }
