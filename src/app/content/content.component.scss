@@ -9,18 +9,20 @@
         position: fixed;
         padding-top: 50px;
         background-color: $white;
-        cursor: pointer;
+        width: 40%;
 
         .categories {
             text-align: center;
             padding: 0;
+            cursor: pointer;
 
-            h3 {
-                font-size: $font-size-default;
-                font-weight: $font-weight-normal;
+            button {
                 padding: 8px;
+                background-color: $white;
+                width: 100%;
 
-                &:hover {
+                &:hover,
+                &.selected {
                     background-color: $light-blue-tint;
                     color: $light-blue-shade;
                 }
@@ -35,11 +37,23 @@
 
         .sidenav {
             padding-top: 20vh;
-            .categories {
-                h3 {
-                    font-size: $font-size-medium;
-                }
+            width: 30%;
+
+            .categories button {
+                font-size: $font-size-medium;
             }
         }
+    }
+}
+
+@include media-queries('large') {
+    .container .sidenav {
+        width: 25%;
+    }
+}
+
+@include media-queries('huge') {
+    .container .sidenav {
+        width: 20%;
     }
 }
