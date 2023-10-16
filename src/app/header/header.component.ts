@@ -13,6 +13,6 @@ export class HeaderComponent {
     constructor(private toggleMenuService: ToggleMenuService) {}
 
     toggleMenu() {
-        this.toggleMenuService.toggle.next(true);
+        this.toggleMenuService.toggle.next();
     }
 }

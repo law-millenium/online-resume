@@ -1,16 +1,22 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideEffects } from '@ngrx/effects';
+import { provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { AppComponent } from './app/app.component';
-import {
-    provideRouter,
-    withPreloading,
-    PreloadAllModules
-} from '@angular/router';
-import { APP_ROUTES } from './app/app.routes';
+import * as categoryEffects from './app/core/category.effects';
+import { selectedCategoryReducer } from './app/core/category.reducers';
 
 bootstrapApplication(AppComponent, {
     providers: [
         provideAnimations(),
-        provideRouter(APP_ROUTES, withPreloading(PreloadAllModules))
+        provideStore({ categoryState: selectedCategoryReducer }),
+        provideStoreDevtools({
+            maxAge: 25, // Retains last 25 states
+            autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+            trace: false, //  If set to true, will include stack trace for every dispatched action, so you can see it in trace tab jumping directly to that part of code
+            traceLimit: 75 // maximum stack trace frames to be stored (in case trace option was provided as true)
+        }),
+        provideEffects(categoryEffects)
     ]
 }).catch((err) => console.error(err));
