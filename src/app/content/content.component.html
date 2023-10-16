@@ -5,15 +5,31 @@
         [(opened)]="isSidenavOpened"
     >
         <mat-nav-list class="categories">
-            <h3>Résumé</h3>
-            <h3>Expériences<br />professionnelles</h3>
-            <h3>Formations</h3>
-            <h3>Etudes</h3>
-            <h3>Hobbies</h3>
+            <button
+                *ngFor="let category of categories"
+                (click)="selectCategory(category)"
+                [ngClass]="{
+                    selected: (currentCategory$ | async) === category
+                }"
+            >
+                {{ category }}
+            </button>
         </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <router-outlet></router-outlet>
+        <ng-container [ngSwitch]="currentCategory$ | async">
+            <ng-container *ngSwitchCase="'Expériences professionnelles'">
+                Expériences professionnelles
+            </ng-container>
+            <ng-container *ngSwitchCase="'Formations'">
+                Formations
+            </ng-container>
+            <ng-container *ngSwitchCase="'Etudes'"> Etudes </ng-container>
+            <ng-container *ngSwitchCase="'Hobbies'"> Hobbies </ng-container>
+            <ng-container *ngSwitchDefault>
+                <app-summary></app-summary>
+            </ng-container>
+        </ng-container>
     </mat-sidenav-content>
 </mat-sidenav-container>

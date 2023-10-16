@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/internal/Subject';
     providedIn: 'root'
 })
 export class ToggleMenuService implements OnDestroy {
-    public toggle = new Subject<boolean>();
+    public toggle = new Subject<void>();
 
     ngOnDestroy() {
         this.toggle.complete();
