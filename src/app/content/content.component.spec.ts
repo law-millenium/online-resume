@@ -110,25 +110,45 @@ describe('ContentComponent', () => {
     });
 
     describe('Category selection', () => {
-        it('should display the summary as initial state', () => {
-            fixture = TestBed.createComponent(ContentComponent);
-            fixture.detectChanges();
-
-            const summaryElement = fixture.debugElement.query(
-                By.css('mat-sidenav-content app-summary')
-            );
-            const selectedCategoryText = fixture.debugElement
-                .query(By.css('.selected'))
-                .nativeElement.textContent.trim();
-            expect(summaryElement).toBeTruthy();
-            expect(selectedCategoryText).toBe('Résumé');
-        });
-
         it.each([
             {
-                selectedCategory: Category.PROFESSIONAL_EXPERIENCES,
-                expected: 'Expériences professionnelles'
+                label: 'the summary',
+                stateStatus: 'initial',
+                selectedCategory: undefined,
+                htmlTag: 'app-summary'
             },
+            {
+                label: 'professional experiences',
+                stateStatus: 'changed',
+                selectedCategory: Category.PROFESSIONAL_EXPERIENCES,
+                htmlTag: 'app-professional-experiences'
+            }
+        ])(
+            'should display $label as $stateStatus state',
+            ({ stateStatus, selectedCategory, htmlTag }) => {
+                selectSelectedCategoryMockedSelector.setResult(
+                    selectedCategory
+                );
+                mockStore.refreshState();
+
+                fixture = TestBed.createComponent(ContentComponent);
+                fixture.detectChanges();
+
+                const sidenavContentText = fixture.debugElement.query(
+                    By.css('mat-sidenav-content ' + htmlTag)
+                );
+                expect(sidenavContentText).toBeTruthy();
+
+                if (stateStatus === 'changed') {
+                    const selectedCategoryText = fixture.debugElement
+                        .query(By.css('.selected'))
+                        .nativeElement.textContent.trim();
+                    expect(selectedCategoryText).toBe(selectedCategory);
+                }
+            }
+        );
+
+        it.each([
             {
                 selectedCategory: Category.TRAINING_COURSES,
                 expected: 'Formations'

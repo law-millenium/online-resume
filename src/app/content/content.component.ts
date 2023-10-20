@@ -11,11 +11,18 @@ import { Category } from '../core/category.enum';
 import { selectCurrentCategory } from '../core/category.selectors';
 import { ToggleMenuService } from '../services/toggle-menu.service';
 import { SummaryComponent } from './summary/summary.component';
+import { ProfessionalExperiencesComponent } from './professional-experiences/professional-experiences.component';
 
 @Component({
     selector: 'app-content',
     standalone: true,
-    imports: [MatSidenavModule, MatListModule, CommonModule, SummaryComponent],
+    imports: [
+        MatSidenavModule,
+        MatListModule,
+        CommonModule,
+        SummaryComponent,
+        ProfessionalExperiencesComponent
+    ],
     templateUrl: './content.component.html',
     styleUrls: ['./content.component.scss']
 })

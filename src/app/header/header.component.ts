@@ -12,7 +12,7 @@ import { ToggleMenuService } from '../services/toggle-menu.service';
 export class HeaderComponent {
     constructor(private toggleMenuService: ToggleMenuService) {}
 
-    toggleMenu() {
+    protected toggleMenu() {
         this.toggleMenuService.toggle.next();
     }
 }
