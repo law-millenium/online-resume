@@ -1,4 +1,7 @@
 {
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -19,6 +22,7 @@
         "header",
         "Sidenav",
         "summary",
-        "professional-experiences"
+        "professional-experiences",
+        "training-courses"
     ]
 }
