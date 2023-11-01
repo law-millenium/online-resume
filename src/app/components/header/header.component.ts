@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ToggleMenuService } from '../services/toggle-menu.service';
+import { ToggleMenuService } from 'src/app/services/toggle-menu.service';
 
 @Component({
     selector: 'app-header',
