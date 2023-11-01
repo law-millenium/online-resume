@@ -1,0 +1,74 @@
+@import '/src/scss/utilities/color';
+@import '/src/scss/utilities/mixins';
+@import '/src/scss/utilities/variables';
+
+.card {
+    margin: 20px 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px $gray;
+
+    button {
+        background-color: $white;
+        width: 100%;
+        padding: 0;
+
+        &.folded {
+            border-bottom: 2px solid $light-gray;
+            padding-bottom: 5px;
+        }
+
+        .title {
+            display: flex;
+            flex-direction: row;
+            line-height: 1.5rem;
+
+            :first-child {
+                font-weight: $font-weight-bold;
+            }
+
+            .chevron {
+                color: $gray;
+                margin-left: auto;
+                transition: transform 300ms ease-in-out;
+
+                &.folded {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+
+    .description {
+        margin-top: 10px;
+        text-align: justify;
+    }
+
+    .skills {
+        text-align: justify;
+
+        .bold {
+            font-weight: $font-weight-bold;
+        }
+    }
+}
+
+@include media-queries('medium') {
+    .card {
+        margin: 20px;
+
+        button .title {
+            line-height: 2.7rem;
+
+            p {
+                font-size: $font-size-medium;
+            }
+        }
+    }
+}
+
+@include media-queries('huge') {
+    .card {
+        margin: 3%;
+    }
+}

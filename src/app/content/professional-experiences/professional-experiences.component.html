@@ -1,0 +1,45 @@
+<div
+    class="card"
+    *ngFor="let professionalExperience of professionalExperiences"
+>
+    <button
+        [ngClass]="{
+            folded: selectedCompanyName === professionalExperience.companyName
+        }"
+        (click)="toggleContentForExperience(professionalExperience.companyName)"
+    >
+        <div class="title">
+            <p>{{ professionalExperience.companyName }} •&nbsp;</p>
+            <p>{{ professionalExperience.period }}</p>
+            <img
+                class="chevron"
+                [ngClass]="{
+                    folded:
+                        selectedCompanyName ===
+                        professionalExperience.companyName
+                }"
+                src="../../../assets/chevron.svg"
+                alt="Bouton dépliement carte"
+            />
+        </div>
+    </button>
+    <ng-container
+        *ngIf="selectedCompanyName === professionalExperience.companyName"
+    >
+        <p
+            class="description"
+            [innerHTML]="professionalExperience.description"
+        ></p>
+        <p class="skills">
+            <span class="bold">Compétences :</span>
+            <span
+                *ngFor="
+                    let skill of professionalExperience.skills;
+                    let isLast = last
+                "
+            >
+                {{ skill }} {{ isLast ? '' : '•' }}
+            </span>
+        </p>
+    </ng-container>
+</div>

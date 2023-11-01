@@ -20,7 +20,7 @@
     <mat-sidenav-content>
         <ng-container [ngSwitch]="currentCategory$ | async">
             <ng-container *ngSwitchCase="'Expériences professionnelles'">
-                Expériences professionnelles
+                <app-professional-experiences></app-professional-experiences>
             </ng-container>
             <ng-container *ngSwitchCase="'Formations'">
                 Formations
