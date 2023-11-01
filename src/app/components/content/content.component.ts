@@ -5,13 +5,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatDrawerMode, MatSidenavModule } from '@angular/material/sidenav';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppState } from '../app.component';
-import { changeCategory } from '../core/category.actions';
-import { Category } from '../core/category.enum';
-import { selectCurrentCategory } from '../core/category.selectors';
-import { ToggleMenuService } from '../services/toggle-menu.service';
 import { SummaryComponent } from './summary/summary.component';
 import { ProfessionalExperiencesComponent } from './professional-experiences/professional-experiences.component';
+import { AppState } from 'src/app/app.component';
+import { changeCategory } from 'src/app/core/category.actions';
+import { Category } from 'src/app/core/category.enum';
+import { selectCurrentCategory } from 'src/app/core/category.selectors';
+import { ToggleMenuService } from 'src/app/services/toggle-menu.service';
 
 @Component({
     selector: 'app-content',
