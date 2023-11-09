@@ -20,10 +20,18 @@
     <mat-sidenav-content>
         <ng-container [ngSwitch]="currentCategory$ | async">
             <ng-container *ngSwitchCase="'Expériences professionnelles'">
-                <app-professional-experiences></app-professional-experiences>
+                <app-card
+                    *ngFor="
+                        let professionalExperience of professionalExperiences
+                    "
+                    [cardContent]="professionalExperience"
+                ></app-card>
             </ng-container>
             <ng-container *ngSwitchCase="'Formations'">
-                Formations
+                <app-card
+                    *ngFor="let trainingCourse of trainingCourses"
+                    [cardContent]="trainingCourse"
+                ></app-card>
             </ng-container>
             <ng-container *ngSwitchCase="'Etudes'"> Etudes </ng-container>
             <ng-container *ngSwitchCase="'Hobbies'"> Hobbies </ng-container>

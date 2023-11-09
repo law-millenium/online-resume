@@ -14,12 +14,12 @@
         .categories {
             text-align: center;
             padding: 0;
-            cursor: pointer;
 
             button {
                 padding: 8px;
                 background-color: $white;
                 width: 100%;
+                cursor: pointer;
 
                 &:hover,
                 &.selected {

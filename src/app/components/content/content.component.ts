@@ -5,13 +5,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatDrawerMode, MatSidenavModule } from '@angular/material/sidenav';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { AppState } from '../../app.component';
+import { changeCategory } from '../../core/category.actions';
+import { Category } from '../../core/category.enum';
+import { selectCurrentCategory } from '../../core/category.selectors';
+import { ToggleMenuService } from '../../services/toggle-menu.service';
+import { CardComponent } from '../../shared/card/card.component';
 import { SummaryComponent } from './summary/summary.component';
-import { ProfessionalExperiencesComponent } from './professional-experiences/professional-experiences.component';
-import { AppState } from 'src/app/app.component';
-import { changeCategory } from 'src/app/core/category.actions';
-import { Category } from 'src/app/core/category.enum';
-import { selectCurrentCategory } from 'src/app/core/category.selectors';
-import { ToggleMenuService } from 'src/app/services/toggle-menu.service';
+import { professionalExperiences } from './professional-experiences/professional-experiences';
+import { trainingCourses } from './training-courses/training-courses';
 
 @Component({
     selector: 'app-content',
@@ -21,7 +23,7 @@ import { ToggleMenuService } from 'src/app/services/toggle-menu.service';
         MatListModule,
         CommonModule,
         SummaryComponent,
-        ProfessionalExperiencesComponent
+        CardComponent
     ],
     templateUrl: './content.component.html',
     styleUrls: ['./content.component.scss']
@@ -29,6 +31,8 @@ import { ToggleMenuService } from 'src/app/services/toggle-menu.service';
 export class ContentComponent {
     protected currentCategory$ = new Observable<Category>();
 
+    protected professionalExperiences = professionalExperiences;
+    protected trainingCourses = trainingCourses;
     protected categories = Object.values(Category);
     protected modeSideNav: MatDrawerMode = 'side';
     protected isSidenavOpened!: boolean;

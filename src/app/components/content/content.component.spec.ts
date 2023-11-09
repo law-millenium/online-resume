@@ -5,12 +5,12 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MemoizedSelector } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { Subject, of } from 'rxjs';
+import { AppState } from '../../app.component';
+import { Category } from '../../core/category.enum';
+import { selectCurrentCategory } from '../../core/category.selectors';
+import { CategoryState } from '../../core/category.state';
+import { ToggleMenuService } from '../../services/toggle-menu.service';
 import { ContentComponent } from './content.component';
-import { AppState } from 'src/app/app.component';
-import { Category } from 'src/app/core/category.enum';
-import { selectCurrentCategory } from 'src/app/core/category.selectors';
-import { CategoryState } from 'src/app/core/category.state';
-import { ToggleMenuService } from 'src/app/services/toggle-menu.service';
 
 class MockToggleMenuService {
     public toggle = new Subject<boolean>();
@@ -121,7 +121,13 @@ describe('ContentComponent', () => {
                 label: 'professional experiences',
                 stateStatus: 'changed',
                 selectedCategory: Category.PROFESSIONAL_EXPERIENCES,
-                htmlTag: 'app-professional-experiences'
+                htmlTag: 'app-card'
+            },
+            {
+                label: 'training courses',
+                stateStatus: 'changed',
+                selectedCategory: Category.TRAINING_COURSES,
+                htmlTag: 'app-card'
             }
         ])(
             'should display $label as $stateStatus state',
@@ -149,10 +155,6 @@ describe('ContentComponent', () => {
         );
 
         it.each([
-            {
-                selectedCategory: Category.TRAINING_COURSES,
-                expected: 'Formations'
-            },
             {
                 selectedCategory: Category.STUDIES,
                 expected: 'Etudes'
