@@ -12,8 +12,9 @@
         background-color: $white;
         width: 100%;
         padding: 0;
+        cursor: pointer;
 
-        &.folded {
+        &.unfolded {
             border-bottom: 2px solid $light-gray;
             padding-bottom: 5px;
         }
@@ -22,6 +23,10 @@
             display: flex;
             flex-direction: row;
             line-height: 1.5rem;
+
+            * {
+                margin: auto 0;
+            }
 
             :first-child {
                 font-weight: $font-weight-bold;
@@ -32,7 +37,7 @@
                 margin-left: auto;
                 transition: transform 300ms ease-in-out;
 
-                &.folded {
+                &.unfolded {
                     transform: rotate(180deg);
                 }
             }
@@ -45,6 +50,7 @@
     }
 
     .skills {
+        margin-top: 1rem;
         text-align: justify;
 
         .bold {
@@ -62,6 +68,14 @@
 
             p {
                 font-size: $font-size-medium;
+            }
+
+            .duration {
+                margin-right: 5px;
+            }
+
+            .chevron {
+                height: 42px;
             }
         }
     }

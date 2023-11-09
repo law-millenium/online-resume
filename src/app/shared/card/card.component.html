@@ -1,0 +1,32 @@
+<div class="card">
+    <button
+        [ngClass]="{
+            unfolded: !isFolded
+        }"
+        (click)="toggleCard()"
+    >
+        <div class="title">
+            <p>{{ cardContent.name }}</p>
+            <p>&nbsp;•&nbsp;</p>
+            <p class="duration">{{ cardContent.period }}</p>
+            <img
+                class="chevron"
+                [ngClass]="{
+                    unfolded: !isFolded
+                }"
+                src="../../../assets/chevron.svg"
+                alt="Bouton dépliement carte"
+            />
+        </div>
+    </button>
+    <ng-container *ngIf="!isFolded">
+        <p class="description" [innerHTML]="cardContent.description"></p>
+
+        <p class="skills" *ngIf="cardContent.skills.length > 0">
+            <span class="bold">Compétences :</span>
+            <span *ngFor="let skill of cardContent.skills; let isLast = last">
+                {{ skill }} {{ isLast ? '' : '•' }}
+            </span>
+        </p>
+    </ng-container>
+</div>
