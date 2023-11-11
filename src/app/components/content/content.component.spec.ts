@@ -128,6 +128,12 @@ describe('ContentComponent', () => {
                 stateStatus: 'changed',
                 selectedCategory: Category.TRAINING_COURSES,
                 htmlTag: 'app-card'
+            },
+            {
+                label: 'studies',
+                stateStatus: 'changed',
+                selectedCategory: Category.STUDIES,
+                htmlTag: 'app-card'
             }
         ])(
             'should display $label as $stateStatus state',
@@ -155,10 +161,6 @@ describe('ContentComponent', () => {
         );
 
         it.each([
-            {
-                selectedCategory: Category.STUDIES,
-                expected: 'Etudes'
-            },
             {
                 selectedCategory: Category.HOBBIES,
                 expected: 'Hobbies'

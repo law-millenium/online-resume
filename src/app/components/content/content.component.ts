@@ -11,8 +11,9 @@ import { Category } from '../../core/category.enum';
 import { selectCurrentCategory } from '../../core/category.selectors';
 import { ToggleMenuService } from '../../services/toggle-menu.service';
 import { CardComponent } from '../../shared/card/card.component';
-import { SummaryComponent } from './summary/summary.component';
 import { professionalExperiences } from './professional-experiences/professional-experiences';
+import { studies } from './studies/studies';
+import { SummaryComponent } from './summary/summary.component';
 import { trainingCourses } from './training-courses/training-courses';
 
 @Component({
@@ -33,6 +34,7 @@ export class ContentComponent {
 
     protected professionalExperiences = professionalExperiences;
     protected trainingCourses = trainingCourses;
+    protected studies = studies;
     protected categories = Object.values(Category);
     protected modeSideNav: MatDrawerMode = 'side';
     protected isSidenavOpened!: boolean;

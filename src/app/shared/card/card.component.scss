@@ -26,6 +26,7 @@
 
             * {
                 margin: auto 0;
+                font-weight: $font-weight-normal;
             }
 
             :first-child {
@@ -66,7 +67,7 @@
         button .title {
             line-height: 2.7rem;
 
-            p {
+            h3 {
                 font-size: $font-size-medium;
             }
 
