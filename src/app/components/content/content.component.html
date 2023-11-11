@@ -33,7 +33,12 @@
                     [cardContent]="trainingCourse"
                 ></app-card>
             </ng-container>
-            <ng-container *ngSwitchCase="'Etudes'"> Etudes </ng-container>
+            <ng-container *ngSwitchCase="'Etudes'">
+                <app-card
+                    *ngFor="let study of studies"
+                    [cardContent]="study"
+                ></app-card>
+            </ng-container>
             <ng-container *ngSwitchCase="'Hobbies'"> Hobbies </ng-container>
             <ng-container *ngSwitchDefault>
                 <app-summary></app-summary>
