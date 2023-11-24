@@ -3,4 +3,5 @@ export interface Card {
     period: string;
     description: string;
     skills: string[];
+    headingGifPath?: string;
 }

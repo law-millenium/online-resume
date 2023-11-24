@@ -29,8 +29,19 @@
                 font-weight: $font-weight-normal;
             }
 
-            :first-child {
+            .name {
                 font-weight: $font-weight-bold;
+            }
+
+            .heading-gif {
+                &:first-child {
+                    margin-right: 3px;
+                }
+
+                &:nth-child(5) {
+                    margin-left: 3px;
+                    transform: scaleX(-1);
+                }
             }
 
             .chevron {
@@ -73,6 +84,18 @@
 
             .duration {
                 margin-right: 5px;
+            }
+
+            .heading-gif {
+                height: 55px;
+
+                &:first-child {
+                    margin-right: 10px;
+                }
+
+                &:nth-child(5) {
+                    margin-left: 10px;
+                }
             }
 
             .chevron {

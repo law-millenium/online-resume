@@ -6,9 +6,23 @@
         (click)="toggleCard()"
     >
         <div class="title">
-            <h3>{{ cardContent.name }}</h3>
-            <h3>&nbsp;•&nbsp;</h3>
-            <h3 class="duration">{{ cardContent.period }}</h3>
+            <img
+                *ngIf="cardContent.headingGifPath"
+                class="heading-gif"
+                src="{{ cardContent.headingGifPath }}"
+                alt="Gif en-tête"
+            />
+            <h3 class="name">{{ cardContent.name }}</h3>
+            <ng-container *ngIf="cardContent.period">
+                <h3>&nbsp;•&nbsp;</h3>
+                <h3 class="duration">{{ cardContent.period }}</h3></ng-container
+            >
+            <img
+                *ngIf="cardContent.headingGifPath"
+                class="heading-gif"
+                src="{{ cardContent.headingGifPath }}"
+                alt="Gif en-tête inversé"
+            />
             <img
                 class="chevron"
                 [ngClass]="{
