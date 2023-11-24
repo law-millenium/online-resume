@@ -134,6 +134,12 @@ describe('ContentComponent', () => {
                 stateStatus: 'changed',
                 selectedCategory: Category.STUDIES,
                 htmlTag: 'app-card'
+            },
+            {
+                label: 'hobbies',
+                stateStatus: 'changed',
+                selectedCategory: Category.HOBBIES,
+                htmlTag: 'app-card'
             }
         ])(
             'should display $label as $stateStatus state',
@@ -157,34 +163,6 @@ describe('ContentComponent', () => {
                         .nativeElement.textContent.trim();
                     expect(selectedCategoryText).toBe(selectedCategory);
                 }
-            }
-        );
-
-        it.each([
-            {
-                selectedCategory: Category.HOBBIES,
-                expected: 'Hobbies'
-            }
-        ])(
-            "should display '$expected' as changed state",
-            ({ selectedCategory, expected }) => {
-                selectSelectedCategoryMockedSelector.setResult(
-                    selectedCategory
-                );
-
-                mockStore.refreshState();
-
-                fixture = TestBed.createComponent(ContentComponent);
-                fixture.detectChanges();
-
-                const sidenavContentText = fixture.debugElement
-                    .query(By.css('mat-sidenav-content'))
-                    .nativeElement.textContent.trim();
-                const selectedCategoryText = fixture.debugElement
-                    .query(By.css('.selected'))
-                    .nativeElement.textContent.trim();
-                expect(sidenavContentText).toBe(expected);
-                expect(selectedCategoryText).toBe(expected);
             }
         );
     });

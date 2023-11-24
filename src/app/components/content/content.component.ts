@@ -15,6 +15,7 @@ import { professionalExperiences } from './professional-experiences/professional
 import { studies } from './studies/studies';
 import { SummaryComponent } from './summary/summary.component';
 import { trainingCourses } from './training-courses/training-courses';
+import { hobbies } from './hobbies/hobbies';
 
 @Component({
     selector: 'app-content',
@@ -35,6 +36,7 @@ export class ContentComponent {
     protected professionalExperiences = professionalExperiences;
     protected trainingCourses = trainingCourses;
     protected studies = studies;
+    protected hobbies = hobbies;
     protected categories = Object.values(Category);
     protected modeSideNav: MatDrawerMode = 'side';
     protected isSidenavOpened!: boolean;
