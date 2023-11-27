@@ -13,6 +13,4 @@ export interface AppState {
     imports: [HeaderComponent, ContentComponent],
     templateUrl: './app.component.html'
 })
-export class AppComponent {
-    title = 'CV Bastien LAHAYE';
-}
+export class AppComponent {}
