@@ -1,21 +1,23 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import { MatDrawerMode, MatSidenavModule } from '@angular/material/sidenav';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { AppState } from '../../app.component';
-import { changeCategory } from '../../core/category.actions';
-import { Category } from '../../core/category.enum';
-import { selectCurrentCategory } from '../../core/category.selectors';
-import { ToggleMenuService } from '../../services/toggle-menu.service';
+import { changeCategory } from '../../core/category/category.actions';
+import { Category } from '../../core/category/category.enum';
+import { selectCurrentCategory } from '../../core/category/category.selectors';
+import { initialSidenavState } from '../../core/sidenav/sidenav.reducers';
+import { selectIsSidenavOpened } from '../../core/sidenav/sidenav.selectors';
 import { CardComponent } from '../../shared/card/card.component';
+import { hobbies } from './hobbies/hobbies';
 import { professionalExperiences } from './professional-experiences/professional-experiences';
 import { studies } from './studies/studies';
 import { SummaryComponent } from './summary/summary.component';
 import { trainingCourses } from './training-courses/training-courses';
-import { hobbies } from './hobbies/hobbies';
+import { toggleSidenav } from '../../core/sidenav/sidenav.actions';
 
 @Component({
     selector: 'app-content',
@@ -30,41 +32,57 @@ import { hobbies } from './hobbies/hobbies';
     templateUrl: './content.component.html',
     styleUrls: ['./content.component.scss']
 })
-export class ContentComponent {
+export class ContentComponent implements OnDestroy {
     protected currentCategory$ = new Observable<Category>();
-
+    protected isSidenavOpened = initialSidenavState.isSidenavOpened;
     protected professionalExperiences = professionalExperiences;
     protected trainingCourses = trainingCourses;
     protected studies = studies;
     protected hobbies = hobbies;
     protected categories = Object.values(Category);
     protected modeSideNav: MatDrawerMode = 'side';
-    protected isSidenavOpened!: boolean;
+
+    private isPortaitOrientedMobile = false;
+    private subscription = new Subscription();
 
     public constructor(
         private breakpointObserver: BreakpointObserver,
-        private toggleMenuService: ToggleMenuService,
         private store: Store<AppState>
     ) {
+        this.currentCategory$ = this.store.select(selectCurrentCategory);
+        this.subscription.add(
+            this.store
+                .select(selectIsSidenavOpened)
+                .subscribe((isSidenavOpened) => {
+                    this.isSidenavOpened = isSidenavOpened;
+                })
+        );
+
         this.breakpointObserver
             .observe(['(max-width: 600px)'])
             .subscribe((breakpointState: BreakpointState) => {
-                const isMobile = breakpointState.matches;
-                this.modeSideNav = isMobile ? 'over' : 'side';
-                this.isSidenavOpened = !isMobile;
-
-                if (isMobile) {
-                    this.toggleMenuService.toggle.subscribe(() => {
-                        this.isSidenavOpened = !this.isSidenavOpened;
-                    });
-                }
+                this.isPortaitOrientedMobile = breakpointState.matches;
+                this.modeSideNav = this.isPortaitOrientedMobile
+                    ? 'over'
+                    : 'side';
+                this.isSidenavOpened = !this.isPortaitOrientedMobile;
+                const props = {
+                    isSidenavOpened: this.isSidenavOpened
+                };
+                this.store.dispatch(toggleSidenav(props));
             });
+    }
 
-        this.currentCategory$ = this.store.select(selectCurrentCategory);
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe();
     }
 
     protected selectCategory(selectedCategory: Category) {
-        const state = { currentCategory: selectedCategory };
-        this.store.dispatch(changeCategory(state));
+        const props = {
+            currentCategory: selectedCategory,
+            isSidenavOpened: !this.isSidenavOpened,
+            shouldToggleSidenav: this.isPortaitOrientedMobile
+        };
+        this.store.dispatch(changeCategory(props));
     }
 }

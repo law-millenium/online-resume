@@ -4,52 +4,44 @@ import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MemoizedSelector } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { Subject, of } from 'rxjs';
+import { of } from 'rxjs';
 import { AppState } from '../../app.component';
-import { Category } from '../../core/category.enum';
-import { selectCurrentCategory } from '../../core/category.selectors';
-import { CategoryState } from '../../core/category.state';
-import { ToggleMenuService } from '../../services/toggle-menu.service';
+import { Category } from '../../core/category/category.enum';
+import { selectCurrentCategory } from '../../core/category/category.selectors';
+import { CategoryState } from '../../core/category/category.state';
+import { initialSidenavState } from '../../core/sidenav/sidenav.reducers';
+import { selectIsSidenavOpened } from '../../core/sidenav/sidenav.selectors';
 import { ContentComponent } from './content.component';
-
-class MockToggleMenuService {
-    public toggle = new Subject<boolean>();
-
-    ngOnDestroy() {
-        // Do nothing
-    }
-}
 
 describe('ContentComponent', () => {
     let fixture: ComponentFixture<ContentComponent>;
     let breakpointObserver: BreakpointObserver;
-    let toggleMenuService: ToggleMenuService;
     let mockStore: MockStore<CategoryState>;
     let selectSelectedCategoryMockedSelector: MemoizedSelector<
         AppState,
         Category
     >;
+    let selectIsSidenavOpenedMockedSelector: MemoizedSelector<
+        AppState,
+        boolean
+    >;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [ContentComponent, NoopAnimationsModule],
-            providers: [
-                provideMockStore(),
-                BreakpointObserver,
-                {
-                    provide: ToggleMenuService,
-                    useClass: MockToggleMenuService
-                }
-            ]
+            providers: [provideMockStore(), BreakpointObserver]
         });
 
         breakpointObserver = TestBed.inject(BreakpointObserver);
-        toggleMenuService = TestBed.inject(ToggleMenuService);
 
         mockStore = TestBed.inject(MockStore);
         selectSelectedCategoryMockedSelector = mockStore.overrideSelector(
             selectCurrentCategory,
             Category.SUMMARY
+        );
+        selectIsSidenavOpenedMockedSelector = mockStore.overrideSelector(
+            selectIsSidenavOpened,
+            initialSidenavState.isSidenavOpened
         );
     });
 
@@ -77,13 +69,13 @@ describe('ContentComponent', () => {
                 fixture = TestBed.createComponent(ContentComponent);
                 fixture.detectChanges();
 
-                const attributes = fixture.debugElement.query(
+                const sidenav = fixture.debugElement.query(
                     By.css('.sidenav')
                 ).nativeElement;
-                expect(attributes.getAttribute('ng-reflect-mode')).toBe(
+                expect(sidenav.getAttribute('ng-reflect-mode')).toBe(
                     sidenavMode
                 );
-                expect(attributes.getAttribute('ng-reflect-opened')).toBe(
+                expect(sidenav.getAttribute('ng-reflect-opened')).toBe(
                     isSidenavOpened
                 );
             }
@@ -97,15 +89,16 @@ describe('ContentComponent', () => {
             fixture = TestBed.createComponent(ContentComponent);
             fixture.detectChanges();
 
-            const attributes = fixture.debugElement.query(
+            const sidenav = fixture.debugElement.query(
                 By.css('.sidenav')
             ).nativeElement;
-            expect(attributes.getAttribute('ng-reflect-opened')).toBe('false');
+            expect(sidenav.getAttribute('ng-reflect-opened')).toBe('false');
 
-            toggleMenuService.toggle.next();
+            selectIsSidenavOpenedMockedSelector.setResult(true);
+            mockStore.refreshState();
             fixture.detectChanges();
 
-            expect(attributes.getAttribute('ng-reflect-opened')).toBe('true');
+            expect(sidenav.getAttribute('ng-reflect-opened')).toBe('true');
         });
     });
 
@@ -163,6 +156,37 @@ describe('ContentComponent', () => {
                         .nativeElement.textContent.trim();
                     expect(selectedCategoryText).toBe(selectedCategory);
                 }
+            }
+        );
+
+        it.each([
+            {
+                isMobile: true,
+                shouldBeDisabled: false
+            },
+            {
+                isMobile: false,
+                shouldBeDisabled: true
+            }
+        ])(
+            'should disable button for current category if sidenav is not togglable',
+            ({ isMobile, shouldBeDisabled }) => {
+                jest.spyOn(breakpointObserver, 'observe').mockReturnValue(
+                    of({ matches: isMobile } as BreakpointState)
+                );
+
+                selectSelectedCategoryMockedSelector.setResult(
+                    Category.HOBBIES
+                );
+                mockStore.refreshState();
+
+                fixture = TestBed.createComponent(ContentComponent);
+                fixture.detectChanges();
+
+                const selectedButton = fixture.debugElement.query(
+                    By.css('.selected')
+                ).nativeElement;
+                expect(selectedButton.disabled).toBe(shouldBeDisabled);
             }
         );
     });

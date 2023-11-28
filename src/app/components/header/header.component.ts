@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { ToggleMenuService } from '../../services/toggle-menu.service';
+import { Component, OnDestroy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { AppState } from '../../app.component';
+import { toggleSidenav } from '../../core/sidenav/sidenav.actions';
+import { initialSidenavState } from '../../core/sidenav/sidenav.reducers';
+import { selectIsSidenavOpened } from '../../core/sidenav/sidenav.selectors';
 
 @Component({
     selector: 'app-header',
@@ -9,10 +14,29 @@ import { ToggleMenuService } from '../../services/toggle-menu.service';
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
-    constructor(private toggleMenuService: ToggleMenuService) {}
+export class HeaderComponent implements OnDestroy {
+    private isSidenavOpened = initialSidenavState.isSidenavOpened;
+    private subscription = new Subscription();
 
-    protected toggleMenu() {
-        this.toggleMenuService.toggle.next();
+    constructor(private store: Store<AppState>) {
+        this.subscription.add(
+            this.store
+                .select(selectIsSidenavOpened)
+                .subscribe(
+                    (isSidenavOpened) =>
+                        (this.isSidenavOpened = isSidenavOpened)
+                )
+        );
+    }
+
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe();
+    }
+
+    protected toggleSidenav() {
+        const props = {
+            isSidenavOpened: !this.isSidenavOpened
+        };
+        this.store.dispatch(toggleSidenav(props));
     }
 }
