@@ -76,31 +76,59 @@
         margin: 20px;
 
         button .title {
-            line-height: 2.7rem;
-
-            h3 {
-                font-size: $font-size-medium;
-            }
-
             .duration {
                 margin-right: 5px;
             }
 
-            .heading-gif {
-                height: 55px;
+            @media (orientation: portrait) {
+                line-height: 2.7rem;
 
-                &:first-child {
-                    margin-right: 10px;
+                h3 {
+                    font-size: $font-size-medium;
                 }
 
-                &:nth-child(5) {
-                    margin-left: 10px;
+                .heading-gif {
+                    height: 55px;
+
+                    &:first-child {
+                        margin-right: 10px;
+                    }
+
+                    &:nth-child(5) {
+                        margin-left: 10px;
+                    }
+                }
+
+                .chevron {
+                    height: 42px;
                 }
             }
+        }
+    }
+}
 
-            .chevron {
-                height: 42px;
+@include media-queries('large') {
+    .card button .title {
+        line-height: 2.7rem;
+
+        h3 {
+            font-size: $font-size-medium;
+        }
+
+        .heading-gif {
+            height: 55px;
+
+            &:first-child {
+                margin-right: 10px;
             }
+
+            &:nth-child(5) {
+                margin-left: 10px;
+            }
+        }
+
+        .chevron {
+            height: 42px;
         }
     }
 }
