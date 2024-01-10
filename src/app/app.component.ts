@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { CategoryState } from './core/category.state';
+import { CategoryState } from './core/category/category.state';
 import { ContentComponent } from './components/content/content.component';
 import { HeaderComponent } from './components/header/header.component';
+import { SidenavState } from './core/sidenav/sidenav.state';
 
 export interface AppState {
     categoryState: CategoryState;
+    sidenavState: SidenavState;
 }
 
 @Component({

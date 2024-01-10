@@ -4,13 +4,17 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { AppComponent } from './app/app.component';
-import * as categoryEffects from './app/core/category.effects';
-import { selectedCategoryReducer } from './app/core/category.reducers';
+import * as categoryEffects from './app/core/category/category.effects';
+import { selectedCategoryReducer } from './app/core/category/category.reducers';
+import { isSidenavOpenedReducer } from './app/core/sidenav/sidenav.reducers';
 
 bootstrapApplication(AppComponent, {
     providers: [
         provideAnimations(),
-        provideStore({ categoryState: selectedCategoryReducer }),
+        provideStore({
+            categoryState: selectedCategoryReducer,
+            sidenavState: isSidenavOpenedReducer
+        }),
         provideStoreDevtools({
             maxAge: 25, // Retains last 25 states
             autoPause: true, // Pauses recording actions and state changes when the extension window is not open

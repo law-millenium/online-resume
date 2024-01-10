@@ -82,27 +82,88 @@
 
                 h1,
                 h2 {
-                    font-size: $font-size-big;
+                    @media (orientation: portrait) {
+                        font-size: $font-size-big;
+                    }
+                    @media (orientation: landscape) {
+                        font-size: $font-size-medium;
+                    }
                 }
             }
 
             .photo {
                 display: block;
                 margin-left: auto;
-                width: 6rem;
-                height: 6rem;
+                width: 8rem;
+                height: 8rem;
                 border-radius: 50%;
                 border-color: $white;
                 border-width: 4px;
                 border-style: solid;
+
+                @media (orientation: landscape) {
+                    width: 4rem;
+                    height: 4rem;
+                    border-width: 2px;
+                }
             }
 
             .linkedin-icon {
-                margin-right: 0.5%;
+                margin-right: 1.5%;
             }
 
             .github-icon {
                 margin-right: 3%;
+            }
+
+            .icon {
+                @media (orientation: portrait) {
+                    width: 2.25rem;
+                    height: 2.25rem;
+                }
+            }
+        }
+    }
+}
+
+@include media-queries('large') {
+    .banner {
+        height: 20vh;
+
+        .button {
+            display: none;
+        }
+
+        .details {
+            .text-container {
+                margin-left: 3%;
+
+                h1,
+                h2 {
+                    font-size: $font-size-very-big;
+                }
+            }
+
+            .photo {
+                @media (orientation: landscape) {
+                    width: 6rem;
+                    height: 6rem;
+                    border-width: 4px;
+                }
+            }
+
+            .linkedin-icon {
+                margin-right: 1%;
+            }
+
+            .icon {
+                width: 3.5rem;
+                height: 3.5rem;
+
+                @media (orientation: landscape) {
+                    width: 2.25rem;
+                    height: 2.25rem;
+                }
             }
         }
     }

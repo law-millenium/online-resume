@@ -14,7 +14,7 @@
 
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-        "source.fixAll": true
+        "source.fixAll": "explicit"
     },
 
     "conventionalCommits.scopes": [
@@ -26,5 +26,6 @@
         "training-courses",
         "studies",
         "hobbies"
-    ]
+    ],
+    "typescript.tsdk": "node_modules\\typescript\\lib"
 }

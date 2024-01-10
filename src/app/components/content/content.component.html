@@ -11,6 +11,10 @@
                 [ngClass]="{
                     selected: (currentCategory$ | async) === category
                 }"
+                [disabled]="
+                    (currentCategory$ | async) === category &&
+                    modeSideNav === 'side'
+                "
             >
                 {{ category }}
             </button>

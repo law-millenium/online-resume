@@ -5,5 +5,7 @@ export const changeCategory = createAction(
     '[Content Component] Change selected category',
     props<{
         currentCategory: Category;
+        isSidenavOpened: boolean;
+        shouldToggleSidenav: boolean;
     }>()
 );
