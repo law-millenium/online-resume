@@ -25,4 +25,4 @@ jobs:
               run: yarn --frozen-lockfile
 
             - name: Build application
-              run: ng build
+              run: yarn build
