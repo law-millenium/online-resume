@@ -10,7 +10,7 @@ on:
     workflow_dispatch:
 
 jobs:
-    build:
+    install:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
@@ -24,5 +24,9 @@ jobs:
             - name: Install dependencies
               run: yarn --frozen-lockfile
 
+    build:
+        needs: [install]
+        runs-on: ubuntu-latest
+        steps:
             - name: Build application
               run: yarn build
