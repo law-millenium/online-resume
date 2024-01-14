@@ -1,0 +1,31 @@
+name: Deployment
+
+on:
+    push:
+        branches: ['master']
+    pull_request:
+        # TODO : juste pour tester !!!
+        branches: ['**']
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
+
+jobs:
+    install:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Setup node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18.17.0
+                  cache: npm
+
+            - name: Install dependencies
+              run: yarn --frozen-lockfile
+    build:
+        needs: [install]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build application
+              run: ng build
