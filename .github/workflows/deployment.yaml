@@ -34,6 +34,7 @@ jobs:
                   path: ./dist/online-resume
 
     deploy:
+        needs: [build]
         runs-on: ubuntu-latest
         steps:
             - name: Deploy to Github Page
