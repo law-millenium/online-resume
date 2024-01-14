@@ -10,12 +10,13 @@ on:
     workflow_dispatch:
 
 jobs:
-    install:
+    build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
+            - name: Checkout repository files
+              uses: actions/checkout@v3
 
-            - name: Setup node
+            - name: Setup Node
               uses: actions/setup-node@v3
               with:
                   node-version: 18.17.0
@@ -24,9 +25,12 @@ jobs:
             - name: Install dependencies
               run: yarn --frozen-lockfile
 
-    build:
-        needs: [install]
-        runs-on: ubuntu-latest
-        steps:
             - name: Build application
               run: yarn build
+
+            - name: Upload artifacts
+              run: actions/upload-pages-artifact@v3
+              with:
+                  path: ./dist/online-resume
+                  name: github-pages
+                  retention-days: 1
