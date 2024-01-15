@@ -9,6 +9,7 @@ import { AppState } from '../../app.component';
 import { changeCategory } from '../../core/category/category.actions';
 import { Category } from '../../core/category/category.enum';
 import { selectCurrentCategory } from '../../core/category/category.selectors';
+import { toggleSidenav } from '../../core/sidenav/sidenav.actions';
 import { initialSidenavState } from '../../core/sidenav/sidenav.reducers';
 import { selectIsSidenavOpened } from '../../core/sidenav/sidenav.selectors';
 import { CardComponent } from '../../shared/card/card.component';
@@ -17,7 +18,6 @@ import { professionalExperiences } from './professional-experiences/professional
 import { studies } from './studies/studies';
 import { SummaryComponent } from './summary/summary.component';
 import { trainingCourses } from './training-courses/training-courses';
-import { toggleSidenav } from '../../core/sidenav/sidenav.actions';
 
 @Component({
     selector: 'app-content',
@@ -84,5 +84,12 @@ export class ContentComponent implements OnDestroy {
             shouldToggleSidenav: this.isPortaitOrientedMobile
         };
         this.store.dispatch(changeCategory(props));
+    }
+
+    protected closeSidenav() {
+        const props = {
+            isSidenavOpened: !this.isSidenavOpened
+        };
+        this.store.dispatch(toggleSidenav(props));
     }
 }
