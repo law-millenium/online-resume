@@ -28,7 +28,8 @@
         "professional-experiences",
         "training-courses",
         "studies",
-        "hobbies"
+        "hobbies",
+        "release"
     ],
     "typescript.tsdk": "node_modules\\typescript\\lib"
 }
