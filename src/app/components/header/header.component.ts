@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
@@ -10,7 +9,7 @@ import { selectIsSidenavOpened } from '../../core/sidenav/sidenav.selectors';
 @Component({
     selector: 'app-header',
     standalone: true,
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
