@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Card } from './card';
 
 @Component({
@@ -7,7 +7,8 @@ import { Card } from './card';
     standalone: true,
     imports: [CommonModule],
     templateUrl: './card.component.html',
-    styleUrls: ['./card.component.scss']
+    styleUrls: ['./card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponent {
     @Input()
