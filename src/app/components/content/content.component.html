@@ -5,53 +5,51 @@
         [(opened)]="isSidenavOpened"
     >
         <mat-nav-list class="categories">
-            <button
-                *ngFor="let category of categories"
-                (click)="selectCategory(category)"
-                [ngClass]="{
-                    selected: (currentCategory$ | async) === category
-                }"
-                [disabled]="
-                    (currentCategory$ | async) === category &&
-                    modeSideNav === 'side'
-                "
-            >
-                {{ category }}
-            </button>
+            @for (category of categories; track category) {
+                <button
+                    (click)="selectCategory(category)"
+                    [ngClass]="{
+                        selected: (currentCategory$ | async) === category
+                    }"
+                    [disabled]="
+                        (currentCategory$ | async) === category &&
+                        modeSideNav === 'side'
+                    "
+                >
+                    {{ category }}
+                </button>
+            }
         </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
-        <ng-container [ngSwitch]="currentCategory$ | async">
-            <ng-container *ngSwitchCase="'Expériences professionnelles'">
-                <app-card
-                    *ngFor="
-                        let professionalExperience of professionalExperiences
-                    "
-                    [cardContent]="professionalExperience"
-                ></app-card>
-            </ng-container>
-            <ng-container *ngSwitchCase="'Formations'">
-                <app-card
-                    *ngFor="let trainingCourse of trainingCourses"
-                    [cardContent]="trainingCourse"
-                ></app-card>
-            </ng-container>
-            <ng-container *ngSwitchCase="'Etudes'">
-                <app-card
-                    *ngFor="let study of studies"
-                    [cardContent]="study"
-                ></app-card>
-            </ng-container>
-            <ng-container *ngSwitchCase="'Hobbies'">
-                <app-card
-                    *ngFor="let hobby of hobbies"
-                    [cardContent]="hobby"
-                ></app-card>
-            </ng-container>
-            <ng-container *ngSwitchDefault>
+        @switch (currentCategory$ | async) {
+            @case ('Expériences professionnelles') {
+                @for (
+                    professionalExperience of professionalExperiences;
+                    track professionalExperience
+                ) {
+                    <app-card [cardContent]="professionalExperience"></app-card>
+                }
+            }
+            @case ('Formations') {
+                @for (trainingCourse of trainingCourses; track trainingCourse) {
+                    <app-card [cardContent]="trainingCourse"></app-card>
+                }
+            }
+            @case ('Etudes') {
+                @for (study of studies; track study) {
+                    <app-card [cardContent]="study"></app-card>
+                }
+            }
+            @case ('Hobbies') {
+                @for (hobby of hobbies; track hobby) {
+                    <app-card [cardContent]="hobby"></app-card>
+                }
+            }
+            @default {
                 <app-summary></app-summary>
-            </ng-container>
-        </ng-container>
+            }
+        }
     </mat-sidenav-content>
 </mat-sidenav-container>

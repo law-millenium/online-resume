@@ -6,23 +6,25 @@
         (click)="toggleCard()"
     >
         <div class="title">
-            <img
-                *ngIf="cardContent.headingGifPath"
-                class="heading-gif"
-                src="{{ cardContent.headingGifPath }}"
-                alt="Gif en-tête"
-            />
+            @if (cardContent.headingGifPath) {
+                <img
+                    class="heading-gif"
+                    src="{{ cardContent.headingGifPath }}"
+                    alt="Gif en-tête"
+                />
+            }
             <h3 class="name">{{ cardContent.name }}</h3>
-            <ng-container *ngIf="cardContent.period">
+            @if (cardContent.period) {
                 <h3>&nbsp;•&nbsp;</h3>
-                <h3 class="duration">{{ cardContent.period }}</h3></ng-container
-            >
-            <img
-                *ngIf="cardContent.headingGifPath"
-                class="heading-gif"
-                src="{{ cardContent.headingGifPath }}"
-                alt="Gif en-tête inversé"
-            />
+                <h3 class="duration">{{ cardContent.period }}</h3>
+            }
+            @if (cardContent.headingGifPath) {
+                <img
+                    class="heading-gif"
+                    src="{{ cardContent.headingGifPath }}"
+                    alt="Gif en-tête inversé"
+                />
+            }
             <img
                 class="chevron"
                 [ngClass]="{
@@ -33,14 +35,19 @@
             />
         </div>
     </button>
-    <ng-container *ngIf="!isFolded">
+    @if (!isFolded) {
         <p class="description" [innerHTML]="cardContent.description"></p>
-
-        <p class="skills" *ngIf="cardContent.skills.length > 0">
-            <span class="bold">Compétences :</span>
-            <span *ngFor="let skill of cardContent.skills; let isLast = last">
-                {{ skill }} {{ isLast ? '' : '•' }}
-            </span>
-        </p>
-    </ng-container>
+        @if (cardContent.skills.length > 0) {
+            <p class="skills">
+                <span class="bold">Compétences :</span>
+                @for (
+                    skill of cardContent.skills;
+                    track skill;
+                    let isLast = $last
+                ) {
+                    <span> {{ skill }} {{ isLast ? '' : '•' }} </span>
+                }
+            </p>
+        }
+    }
 </div>
