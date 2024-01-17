@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AppState } from '../../app.component';
@@ -11,7 +11,8 @@ import { selectIsSidenavOpened } from '../../core/sidenav/sidenav.selectors';
     standalone: true,
     imports: [],
     templateUrl: './header.component.html',
-    styleUrls: ['./header.component.scss']
+    styleUrls: ['./header.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnDestroy {
     private isSidenavOpened = initialSidenavState.isSidenavOpened;

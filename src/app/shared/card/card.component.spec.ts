@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { hobbies } from '../../components/content/hobbies/hobbies';
 import { professionalExperiences } from '../../components/content/professional-experiences/professional-experiences';
 import { CardComponent } from './card.component';
+import { ChangeDetectionStrategy } from '@angular/core';
 
 describe('CardComponent', () => {
     let component: CardComponent;
@@ -15,6 +16,8 @@ describe('CardComponent', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [CardComponent]
+        }).overrideComponent(CardComponent, {
+            set: { changeDetection: ChangeDetectionStrategy.Default }
         });
         fixture = TestBed.createComponent(CardComponent);
         component = fixture.componentInstance;
