@@ -29,7 +29,8 @@
         "training-courses",
         "studies",
         "hobbies",
-        "release"
+        "release",
+        "deps"
     ],
     "typescript.tsdk": "node_modules\\typescript\\lib"
 }
