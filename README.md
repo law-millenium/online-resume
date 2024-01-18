@@ -1,31 +1,31 @@
-# OnlineResume
+# Online Resume
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
+Voici mon site-CV où vous pourrez en apprendre davantage sur mon parcours professionnel, mes compétences et mes passions.
 
-## Development server
+## Technologies Principales
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Ce projet a été initialement développé en Angular 16 avec des composants standalones et a été migré vers la version 17 pour tirer parti des dernières fonctionnalités et améliorations du framework.
 
-## Code scaffolding
+Il intègre également NGRX, une bibliothèque de gestion d'état pour Angular, afin d'optimiser la gestion des données dans l'application.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Pour lancer l'application en local
 
-## Build
+#### Installation des dépendances
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+`yarn`
 
-## Running unit tests
+#### Lancer l'application en mode développement
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+`yarn start`
 
-## Running end-to-end tests
+L'application sera accessible à l'adresse http://localhost:4200/.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Gestion de l'État avec NGRX
 
-## Further help
+NGRX est utilisé pour gérer l'état global de l'application de manière efficace.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Les actions, les réducteurs et les effets sont organisés dans le dossier [/core](https://github.com/law-millenium/online-resume/tree/master/src/app/core).
 
-## Running prettier globally without linter
+## Déploiement sur Github Pages
 
-npx prettier --write \*
+Le projet est actuellement déployé sur Github Pages et est accessible à l'adresse suivante : https://cv-bastien-lahaye.tech/.

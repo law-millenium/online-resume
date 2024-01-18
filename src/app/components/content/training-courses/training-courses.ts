@@ -20,7 +20,7 @@ const nonviolentCommunication = {
     name: 'Communication Non Violente',
     period: '2021',
     description:
-        "Inetum a proposé en 2021 de participer à une session de formation à la Communication Non Violente. Curieux, car en ayant déjà entendu parler quelques fois, j'ai décidé d'y participer. <br> Cette expérience s'est révélée très enrichissante humainement, démontrant des biais cognitifs installés en nous de manière innée et nous apprenant à les reconnaître et les contourner afin de ne pas blesser les autres par nos propos. <br> Cette formation m'a servi tant sur le plan personnel que professionnel lors de mes échanges.",
+        "La CNIEG a proposé à Inetum en 2021 d'accompagner ses salariés dans une formation sur la Communication Non Violente après avoir elle-même réalisé cette action auprès des siens dans une démarche d'amélioration continue. Curieux, car en ayant déjà entendu parler quelques fois, j'ai décidé d'y participer (<i>promis, je n'ai lancé mon clavier sur personne !</i>). <br> Cette expérience s'est révélée très enrichissante humainement, démontrant des biais cognitifs installés en nous de manière innée et nous apprenant à les reconnaître et les contourner afin de ne pas blesser les autres par nos propos. <br> Cette formation m'a servi tant sur le plan personnel que professionnel lors de mes échanges.",
     skills: []
 };
 
