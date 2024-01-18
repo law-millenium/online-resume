@@ -4,7 +4,7 @@ const narutoPlugin = {
     name: 'Naruto Progress',
     period: 'Mai 2022 - Aujourd’hui',
     description:
-        "J'ai créé un plugin pour Intellij IDEA sur l'univers de Naruto pour le plaisir. Les barres de progression et les icônes de chargement peuvent être personnalisées avec des éléments de Naruto. <br> J'ai adapté ce plugin à partir d'un autre plugin similaire sur l'univers de Pokémon, ce qui m'a permis d'améliorer mes compétences en rétro-ingénierie et de découvrir Gradle. <br> <br> Voici la <a href=\"https://plugins.jetbrains.com/plugin/19302-naruto-progress\">page d'accueil</a> de mon plugin. <br> <br> Et voici le <a href=\"https://github.com/law-millenium/naruto-progress/blob/master/README.md\"> repo GitHub</a>.",
+        'J\'ai créé un plugin pour Intellij IDEA sur l\'univers de Naruto pour le plaisir. Les barres de progression et les icônes de chargement peuvent être personnalisées avec des éléments de Naruto. <br> J\'ai adapté ce plugin à partir d\'un autre plugin similaire sur l\'univers de Pokémon, ce qui m\'a permis d\'améliorer mes compétences en rétro-ingénierie et de découvrir Gradle. <br> <br> Voici la <a href="https://plugins.jetbrains.com/plugin/19302-naruto-progress" target="_blank" rel="noopener">page d\'accueil</a> de mon plugin. <br> <br> Et voici le <a href="https://github.com/law-millenium/naruto-progress/blob/master/README.md" target="_blank" rel="noopener"> repo GitHub</a>.',
     skills: ['Java 11', 'Gradle'],
     headingGifPath: '../../../assets/naruto.gif'
 };
