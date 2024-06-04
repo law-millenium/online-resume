@@ -30,7 +30,8 @@
         "studies",
         "hobbies",
         "release",
-        "deps"
+        "deps",
+        "github-actions"
     ],
     "typescript.tsdk": "node_modules\\typescript\\lib"
 }
