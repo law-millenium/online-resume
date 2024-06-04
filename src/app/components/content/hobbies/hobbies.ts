@@ -21,7 +21,7 @@ const personalHobbies = {
     name: 'Activités personnelles',
     period: '',
     description:
-        '<ul> <li> Jeux de société </li> <li> Jeux vidéo </li> <li> Cinéma </li> <li> Animes </li> <li> Lecture </li> <li> Football </li> </ul>',
+        '<ul> <li> Jeux de société </li> <li> Jeux vidéo </li> <li> Cinéma </li> <li> Animes </li> <li> Lecture </li> <li> Football </li> <li> Ping-pong </li> </ul>',
     skills: []
 };
 
