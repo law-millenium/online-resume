@@ -25,9 +25,9 @@
     "tslib": "^2.6.2",
     "zone.js": "^0.14.3"
   },
-  "devDependencies": { 
-    "@angular-devkit/build-angular": "^18.0.6", 
-    "@angular-eslint/builder": "^17.2.1", 
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^18.0.6",
+    "@angular-eslint/builder": "^17.2.1",
     "@angular-eslint/eslint-plugin": "^17.2.1",
     "@angular-eslint/eslint-plugin-template": "^17.2.1",
     "@angular-eslint/schematics": "^17.2.1",
@@ -51,6 +51,6 @@
     "stylelint": "^16.1.0",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard-scss": "^13.0.0",
-    "typescript": "5.4.5"
+    "typescript": "~5.4.5"
   }
 }
