@@ -10,7 +10,7 @@
                 "plugin:@angular-eslint/recommended",
                 "plugin:@angular-eslint/template/process-inline-templates",
                 "plugin:prettier/recommended",
-                "plugin:@ngrx/recommended-requiring-type-checking"
+                "plugin:@ngrx/all"
             ],
             "rules": {
                 "@angular-eslint/directive-selector": [
@@ -29,7 +29,9 @@
                         "style": "kebab-case"
                     }
                 ],
-                "@ngrx/no-store-subscription": "off"
+                "@ngrx/good-action-hygiene": "error",
+                "@ngrx/no-store-subscription": "off",
+                "@ngrx/no-typed-global-store": "off"
             }
         },
         {
